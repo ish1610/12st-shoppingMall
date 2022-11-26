@@ -2,6 +2,8 @@ import React from "react";
 
 import Card from "../../UI/Card";
 
+import logo from "../../../assets/icons/siba.png";
+
 import classes from "./ProductCartItem.module.css";
 
 const ProductCartItem = React.memo(
@@ -10,6 +12,7 @@ const ProductCartItem = React.memo(
       <ul className={classes["productcart-items"]}>
         {!cart.length && (
           <li className={classes["productcart-noneItem"]}>
+            <img src={logo} alt="logo" />
             <h3 className={classes["productcart-noneItem-content"]}>
               장바구니에 담긴 상품이 없습니다.
             </h3>

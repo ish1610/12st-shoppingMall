@@ -30,10 +30,11 @@ const ReviewList = () => {
   return (
     <React.Fragment>
       <div className={classes.ReviewList}>
-        <MyPageListTitle text={"리뷰"} />
-        <div className={classes["select-wrap"]}>
-          <label>표시할 게시물</label>
+        <div className={classes["reviewList-title"]}>
+          <MyPageListTitle text={"리뷰"} />
+
           <select
+            className={classes["select-wrap"]}
             value={perPage}
             onChange={({ target: { value } }) => setPerPage(Number(value))}
           >
@@ -43,11 +44,12 @@ const ReviewList = () => {
             <option value="10">10개씩 보기</option>
           </select>
         </div>
+
         <div className={classes["review-list-wrap-table"]}>
           {getInfo.length === 0 && (
             <MyPageNullMsg
               className={classes["review-content-null"]}
-              text={"리뷰 내역이 없습니다."}
+              text={"작성한 리뷰가 없어요."}
             />
           )}
           {getInfo.slice(indexOfFirstQnA, indexOfLastQnA).map((item, key) => {

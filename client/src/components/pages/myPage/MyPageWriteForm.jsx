@@ -1,5 +1,7 @@
 import React from "react";
 
+import Card from "../../UI/Card";
+
 import classes from "./MyPageWriteForm.module.css";
 
 const MyPageWriteForm = ({
@@ -11,7 +13,7 @@ const MyPageWriteForm = ({
 }) => {
   return (
     <React.Fragment>
-      <div className={classes["write-wrap-content"]}>
+      <Card className={classes["write-wrap-content"]}>
         <div className={classes["write-content-label"]}>
           <div>제목</div>
           <div>
@@ -49,7 +51,7 @@ const MyPageWriteForm = ({
             ></textarea>
           </div>
         </div>
-      </div>
+      </Card>
       <div className={classes["write-content-button"]}>
         <button type="submit">작성하기</button>
       </div>

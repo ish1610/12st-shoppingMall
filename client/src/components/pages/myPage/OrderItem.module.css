@@ -1,10 +1,13 @@
 .OrderItem {
   width: 1000px;
-  border: 1px solid var(--gray-color);
+  border: 1px solid rgb(220, 220, 220);
   border-radius: 15px;
-  box-shadow: 0px 0px 15px var(--gray-color);
+  box-shadow: 0px 0px 15px rgb(220, 220, 220);
   padding: 25px;
   margin-bottom: 40px;
+  background-color: rgb(240, 240, 240);
+
+  position: relative;
 }
 
 .orderitem-wrap-title {
@@ -15,14 +18,16 @@
 }
 
 .orderitem-wrap-title h2 {
+  font-weight: bold;
 }
 
 .orderitem-wrap-title button {
   background-color: var(--navy-color);
   color: white;
 
-  padding: 7px;
+  padding: 5px 10px;
   border-radius: 5px;
+  font-size: 12px;
 
   font-weight: bold;
 }
@@ -32,8 +37,9 @@
   border: 1px solid var(--gray-color);
   border-radius: 10px;
   margin-top: 20px;
-  padding: 25px;
+  padding: 20px;
   align-items: center;
+  background-color: white;
 }
 
 .orderitem-wrap-left {
@@ -42,11 +48,11 @@
 
 .orderitem-item-title {
   display: flex;
-  margin-bottom: 55px;
+  margin-bottom: 30px;
 }
 
 .orderitem-item-title span {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -78,46 +84,41 @@
 
 .orderitem-porfile-content {
   margin-top: 20px;
-  margin-left: 30px;
-  display: flex;
-}
-
-.orderitem-porfile-content span {
-  width: 80px;
-  display: flex;
 }
 
 .orderitem-porfile-content h5 {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.orderitem-porfile-content span {
+  margin-left: 20px;
   font-weight: bold;
 }
 
 .orderitem-wrap-right {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 20%;
-  border-left: 2px solid var(--gray-color);
+
   padding: 10px;
   padding-left: 40px;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
 }
 
 .orderitem-wrap-right button {
-  cursor: pointer;
-  font-weight: bold;
   color: white;
-  background-color: var(--navy-color);
-  border: 1px solid var(--navy-color);
+  /* background-color: var(--navy-color); */
+  border: 1px solid var(--red-color);
   border-radius: 5px;
-  width: 130px;
-  margin-bottom: 10px;
-  padding: 10px;
+  color: var(--black-color);
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .orderitem-wrap-right button:hover {
   color: var(--navy-color);
   background-color: white;
   border: 1px solid var(--navy-color);
-  width: 130px;
-  margin-bottom: 10px;
-  padding: 10px;
 }

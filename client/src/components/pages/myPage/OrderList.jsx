@@ -100,24 +100,23 @@ const OrderList = () => {
                   <FaSearch type="submit" className={classes["search-icon"]} />
                 </button>
               </div>
+
+              <select
+                className={classes["select-wrap"]}
+                // type={Number}
+                value={perPage}
+                onChange={({ target: { value } }) =>
+                  setPerPage(Number(value), setCurrntPage(1))
+                }
+              >
+                <option value="1">1개씩 보기</option>
+                <option value="3">3개씩 보기</option>
+                <option value="5">5개씩 보기</option>
+                <option value="10">10개씩 보기</option>
+              </select>
             </div>
           </div>
         </form>
-        <div className={classes["select-wrap"]}>
-          <label>표시할 게시물</label>
-          <select
-            // type={Number}
-            value={perPage}
-            onChange={({ target: { value } }) =>
-              setPerPage(Number(value), setCurrntPage(1))
-            }
-          >
-            <option value="1">1개씩 보기</option>
-            <option value="3">3개씩 보기</option>
-            <option value="5">5개씩 보기</option>
-            <option value="10">10개씩 보기</option>
-          </select>
-        </div>
 
         <div className={classes["orderlist-wrap-list"]}>
           {orderList.length === 0 && searchList.length === 0 && (

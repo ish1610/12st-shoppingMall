@@ -3,6 +3,7 @@ import classes from "./Nav.module.css";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { cookieCheck, handleLogout } from "../../util/authCheck";
+import { GrUserAdmin } from "react-icons/gr";
 const Nav = () => {
   const location = useLocation();
 
@@ -41,9 +42,10 @@ const Nav = () => {
           ) : (
             <div className={classes["nav-Login"]}>
               {user.uAuth === 2 && (
-                <span>
+                <span className={classes["nav-Login-admin"]}>
                   <Link to="/admin" state={{ user: user }}>
-                    관리자페이지
+                    <GrUserAdmin className={classes["nav-Login-admin__icon"]} />
+                    관리자
                   </Link>
                 </span>
               )}

@@ -7,13 +7,11 @@ const MyPageSide = () => {
   return (
     <React.Fragment>
       <div className={classes.MyPageSide}>
-        <div className={classes["side-item"]}>
+        <div className={`${classes["side-item"]} ${classes.noneBorder}`}>
           <h2>MY 쇼핑</h2>
           <div>
             <MyPageSideLink to="/mypage" text={"주문목록"} first={true} />
           </div>
-
-          <hr />
         </div>
 
         <div className={classes["side-item"]}>
@@ -22,7 +20,6 @@ const MyPageSide = () => {
           <div>
             <MyPageSideLink to="mypointcheck" text={"포인트확인"} />
           </div>
-          <hr />
         </div>
 
         <div className={classes["side-item"]}>
@@ -37,7 +34,6 @@ const MyPageSide = () => {
           <div>
             <MyPageSideLink to="/cart" text={"장바구니"} />
           </div>
-          <hr />
         </div>
 
         <div className={classes["side-item"]}>

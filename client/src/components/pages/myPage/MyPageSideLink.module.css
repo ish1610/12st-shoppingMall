@@ -1,3 +1,5 @@
 .active {
   color: var(--red-color);
+
+  font-weight: bold;
 }

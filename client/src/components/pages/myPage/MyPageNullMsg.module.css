@@ -1,3 +1,18 @@
+.myPageNullMsg {
+  width: 100%;
+  border: 1px solid var(--navy-color);
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.myPageNullMsg img {
+  width: 100px;
+  margin-right: 30px;
+}
+
 .title {
   font-size: 36px;
   font-weight: bold;

@@ -37,7 +37,7 @@ const OrderItem = ({ orderList }) => {
             </div>
             <div className={classes["orderitem-item-content"]}>
               <div className={classes["orderitem-item-img"]}>
-                <img src={orderList.image} alt="" />
+                <img src={orderList.image} alt={orderList.title} />
               </div>
 
               <div className={classes["orderitem-item-porfile"]}>
@@ -49,12 +49,13 @@ const OrderItem = ({ orderList }) => {
                   </button>
                 </div>
                 <div className={classes["orderitem-porfile-content"]}>
-                  <span>
-                    <h5>{orderList.price}</h5>원
-                  </span>
-                  <span>
-                    <h5>{orderList.oQuantity}</h5>개
-                  </span>
+                  <h5>
+                    상품가격
+                    <span>{orderList.price.toLocaleString("ko-kr")}원</span>
+                  </h5>
+                  <h5>
+                    구매수량 <span>{orderList.oQuantity}</span>
+                  </h5>
                 </div>
               </div>
             </div>
@@ -76,7 +77,7 @@ const OrderItem = ({ orderList }) => {
                 })
               }
             >
-              교환,반품 신청
+              교환 / 반품 신청
             </button>
             <button onClick={() => navigate(`/products/${orderList.pId}`)}>
               재구매

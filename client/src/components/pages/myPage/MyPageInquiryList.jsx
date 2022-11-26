@@ -37,11 +37,11 @@ const MyPageInquiryList = () => {
   return (
     <React.Fragment>
       <div className={classes.MyPageInquiryList}>
-        <MyPageListTitle text={"문의내역"} />
+        <div className={classes["inquiryList-title"]}>
+          <MyPageListTitle text={"문의내역"} />
 
-        <div className={classes["select-wrap"]}>
-          <label>표시할 게시물</label>
           <select
+            className={classes["select-wrap"]}
             // type={Number}
             value={perPage}
             onChange={({ target: { value } }) => {
@@ -55,6 +55,7 @@ const MyPageInquiryList = () => {
             <option value="10">10개씩 보기</option>
           </select>
         </div>
+
         <div className={classes["inquiry-list-wrap-table"]}>
           {getInfo.length === 0 && (
             <MyPageNullMsg

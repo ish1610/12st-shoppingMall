@@ -41,34 +41,6 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
       });
-    //---------------------기존코드-----------------------------//
-    /*
-    await axios
-      .post("http://localhost:5000/login", { userID, userPW })
-      .then((response) => {
-        if (response.data.status === 200) {
-          window.alert(response.data.message);
-          localStorage.setItem("token", response.data.token);
-
-          // localStorage.setItem("id", response.data.id);
-          // localStorage.setItem("pw", response.data.pw);
-          // localStorage.setItem("name", response.data.name);
-          // localStorage.setItem("email", response.data.email);
-          // localStorage.setItem("phone", response.data.phone);
-          window.location = "/";
-        } else if (response.data.status === 400) {
-          window.alert(response.data.message);
-          window.location = "/login";
-        } else if (response.data.status === 404) {
-          window.alert(response.data.message);
-          window.location = "/regist";
-        } else {
-          window.alert("관리자에게 문의하세요.");
-          window.location = "/";
-        }
-      });
-      */
-    //---------------------기존코드-----------------------------//
   };
   //useEffect로 비밀번호 보기 숨기기 결정
   useEffect(() => {
@@ -128,21 +100,26 @@ const Login = () => {
               className={classes["form-login-submit"]}
             ></input>
           </div>
+          <Link className={classes["form-login-non"]}>
+            <div>비회원 주문조회</div>
+          </Link>
+
+          <div className={classes["form-login-easy"]}>
+            <p className={classes["form-login-easy__title"]}>간편 로그인</p>
+            <div className={classes["form-login-easy__img"]}>
+              <img src={iconGoogle} alt="구글로그인이미지" />
+              <img src={iconKakao} alt="카카오로그인이미지" />
+              <img src={iconNaver} alt="네이버로그인이미지" />
+              <img src={iconApple} alt="애플로그인이미지" />
+            </div>
+          </div>
           <div className={classes["form-login-links"]}>
             <Link>아이디찾기</Link>
             <Link>비밀번호찾기</Link>
             <Link to={"/regist"}>회원가입</Link>
           </div>
-          <Link className={classes["form-login-non"]}>
-            <div>비회원 주문조회</div>
-          </Link>
-          <div className={classes["form-login-easy"]}>
-            <img src={iconGoogle} alt="구글로그인이미지" />
-            <img src={iconKakao} alt="카카오로그인이미지" />
-            <img src={iconNaver} alt="네이버로그인이미지" />
-            <img src={iconApple} alt="애플로그인이미지" />
-          </div>
-          <div className={classes["form-login-banner"]}>배너탭</div>
+
+          <div className={classes["form-login-banner"]}>12st SALE 12% ~</div>
         </div>
       </form>
     </React.Fragment>

@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.nav a:hover {
+  text-decoration: none;
+}
+
 .nav-category a {
   margin-left: 20px;
   color: var(--navy-color);
@@ -27,7 +31,6 @@
 
 .nav-category a:hover {
   font-weight: bold;
-  text-decoration-line: none;
 }
 
 .nav-category a:after {
@@ -70,4 +73,13 @@
   margin-left: 20px;
   padding: 5px;
   align-items: center;
+}
+
+.nav-Login-admin {
+  display: flex;
+}
+
+.nav-Login-admin__icon {
+  align-items: center;
+  margin-right: 5px;
 }

@@ -8,9 +8,15 @@
   align-items: center;
   justify-content: center;
 }
+
+.productcart-noneItem img {
+  width: 80px;
+  margin-right: 20px;
+}
 .productcart-noneItem-content {
   font-size: 28px;
   font-weight: bold;
+  display: flex;
 }
 
 .productcart-item {

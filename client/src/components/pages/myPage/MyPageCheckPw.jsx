@@ -11,24 +11,6 @@ const MyPageCheckPw = ({ user, setUserPw }) => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await axios
-  //       .get("http://localhost:5000/", { withCredentials: true })
-  //       .then((response) => {
-  //         if (response.data.status === 401) {
-  //           alert(response.data.message);
-  //           navigate("/login", { replace: true });
-  //         } else if (response.data.status === 200) {
-  //           getUser(setUser);
-  //         }
-  //       });
-  //   };
-  //   fetchData();
-  //   authCheck();
-  //   getUser(setUser);
-  // }, []);
-
   const checkPw = async (e) => {
     e.preventDefault();
 
@@ -58,7 +40,7 @@ const MyPageCheckPw = ({ user, setUserPw }) => {
         <MyPageListTitle text={"회원 정보 확인"} />
         <div className={classes["checkpw-wrap-title"]}>
           <span>{user.uName}</span>
-          님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.
+          님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인합니다.
         </div>
         <form action="" onSubmit={checkPw}>
           <div className={classes["checkpw-wrap-content"]}>
