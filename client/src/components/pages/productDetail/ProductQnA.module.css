@@ -1,0 +1,16 @@
+.productQnA {
+  padding: 0 100px;
+}
+
+.productQnA-title {
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #ccc;
+}
+
+.productQnA-amount {
+  color: var(--red-color);
+  margin-left: 10px;
+}

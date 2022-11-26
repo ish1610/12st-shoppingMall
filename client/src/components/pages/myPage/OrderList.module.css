@@ -1,0 +1,79 @@
+.OrderList {
+  margin-left: 30px;
+}
+
+.orderlist-wrap-title {
+  width: 800px;
+}
+
+.orderlist-wrap-input {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.orderlist-input {
+  width: 500px;
+}
+
+.orderlist-input input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--gray-color);
+}
+
+.orderlist-wrap-icon {
+  display: flex;
+  justify-content: space-between;
+  width: 70px;
+  margin-left: -80px;
+  margin-top: 3px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.search-icon {
+  color: rgb(86, 178, 240);
+  font-size: 19px;
+}
+
+.reset-icon {
+  color: gray;
+  opacity: 0.5;
+}
+
+.dum-icon {
+  background-color: transparent;
+  color: white;
+}
+
+.orderlist-wrap-list {
+  margin-top: 30px;
+}
+
+.orderlist-content-null {
+  margin-top: 100px;
+  margin-left: 250px;
+}
+
+select {
+  outline: none;
+}
+
+.select-wrap {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+
+  align-items: center;
+}
+
+.select-wrap label {
+  font-weight: bold;
+  margin-right: 15px;
+}

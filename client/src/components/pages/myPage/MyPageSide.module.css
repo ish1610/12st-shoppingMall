@@ -1,0 +1,27 @@
+.MyPageSide {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 500px;
+  background-color: var(--gray-color);
+  margin-left: 10px;
+  padding-top: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid var(--black-color);
+}
+
+.side-item h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.side-item div {
+  margin-bottom: 15px;
+}
+
+a:hover {
+  text-decoration: underline;
+}

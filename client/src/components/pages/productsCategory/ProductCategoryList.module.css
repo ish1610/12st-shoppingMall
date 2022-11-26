@@ -1,0 +1,18 @@
+.productsCategory-categoryList-wrap {
+  margin-bottom: 28px;
+  cursor: pointer;
+}
+
+.productsCategory-categoryList {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: RGB(62, 62, 62);
+}
+
+.productsCategory-categoryList:focus {
+  font-weight: bold;
+}

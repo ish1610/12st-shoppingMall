@@ -1,0 +1,9 @@
+.banner {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  row-gap: 80px;
+  column-gap: 5%;
+
+  margin-bottom: 50px;
+  padding: 30px 0;
+}
