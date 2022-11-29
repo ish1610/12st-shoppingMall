@@ -9,9 +9,15 @@ import classes from "./Product.module.css";
 import { FaAngleUp, FaAngleDown, FaAngleRight } from "react-icons/fa";
 import Card from "../../UI/Card";
 import { getUser } from "../../../util/getUser";
+import {
+  authCheck,
+  cookieCheck,
+  cookieCheckLogin,
+} from "../../../util/authCheck";
 
 const Product = () => {
   const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useState(false);
   const [user, setUser] = useState();
   const [currentData, setCurrentData] = useState({
     productData: [],
@@ -31,19 +37,26 @@ const Product = () => {
     orderValue;
 
   const handleInsertCart = async () => {
-    await axios
-      .post("http://localhost:5000/order/api/cart/insert", {
-        sQuantity: orderValue,
-        uId: user.uId,
-        productId: productData.productId,
-      })
-      .then((response) => {
-        if (response.data.status === 200) {
-          if (window.confirm(response.data.message)) {
-            navigate("/cart");
+    if (!isLogin) {
+      cookieCheckLogin(setIsLogin);
+      if (window.confirm("로그인이 필요합니다.")) {
+        navigate("/login");
+      }
+    } else {
+      await axios
+        .post("http://localhost:5000/order/api/cart/insert", {
+          sQuantity: orderValue,
+          uId: user.uId,
+          productId: productData.productId,
+        })
+        .then((response) => {
+          if (response.data.status === 200) {
+            if (window.confirm(response.data.message)) {
+              navigate("/cart");
+            }
           }
-        }
-      });
+        });
+    }
   };
 
   const setPreviewImg = (e) => {
@@ -78,11 +91,18 @@ const Product = () => {
     }
   };
   const sendOrderData = () => {
-    navigate("/order", { state: { order } });
+    if (!isLogin) {
+      cookieCheckLogin(setIsLogin);
+      if (window.confirm("로그인이 필요합니다.")) {
+        navigate("/login");
+      }
+    } else {
+      navigate("/order", { state: { order } });
+    }
   };
 
   useEffect(() => {
-    getUser(setUser);
+    cookieCheck(setIsLogin, setUser);
 
     const fetchData = async () => {
       await axios
