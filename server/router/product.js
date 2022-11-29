@@ -17,14 +17,22 @@ router.use(
 );
 
 router.get("/api/get/products", (req, res) => {
+  let startNum = +req.query.startNum || 0;
+  const endNum = 20;
+  const lastDataNum = 100;
+
   let sql1 = "SELECT DISTINCT * FROM products;";
   let sql2 =
-    "SELECT DISTINCT * FROM products ORDER BY products.pSellCount DESC LIMIT 0,100;";
-  db.query(sql1 + sql2, (err, result) => {
+    "SELECT DISTINCT * FROM products ORDER BY products.pSellCount DESC LIMIT ?, ?;";
+  db.query(sql1 + sql2, [startNum, endNum], (err, result) => {
     if (err) {
       throw err;
     } else {
-      res.send({ result });
+      res.send({
+        result,
+        startNum: result[1].length ? endNum + startNum : 0,
+        moreData: startNum >= lastDataNum ? false : true,
+      });
     }
   });
 });

@@ -79,7 +79,7 @@ const ProductsCategory = () => {
           next={fetchData3}
           hasMore={hasMore}
           endMessage={
-            <div className={classes["product-content-end"]}>
+            <div>
               <h1>더 이상 상품이 없습니다</h1>
             </div>
           }

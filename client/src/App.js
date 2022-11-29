@@ -37,18 +37,35 @@ function App() {
   const [data, setData] = useState([]);
   const [bestProduct, setBestProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [startNum, setStartNum] = useState(0); // 렌더링 시킬 데이터의 시작 인덱스
+  const [hasMore, setHasmore] = useState(true); // 렌더링 시킬 데이터 여부
+  const [tmpNum, setTmpNum] = useState(0); // 서버에서 전달받은 데이터의 시작 인덱스를 임시로 관리하는 State
+
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get("http://localhost:5000/product/api/get/products")
+        .get(
+          "http://localhost:5000/product/api/get/products?startNum=" + startNum // axios로 서버 통신 시 쿼리스트링을 이용해 startNum prop 전달
+        )
         .then((response) => {
           setData(response.data.result[0]);
-          setBestProduct(response.data.result[1]);
+          setBestProduct((prev) => {
+            return [...prev, ...response.data.result[1]];
+          });
           setIsLoading(true);
+          setTmpNum(response.data.startNum);
+          setHasmore(response.data.moreData);
         });
     };
     fetchData();
-  }, []);
+  }, [startNum]);
+
+  const handleStateNum = () => {
+    // InfiniteScroll 컴포넌트에 전달하는 스크롤이 바닥에 위치하면 실행시킬 함수
+    setStartNum(tmpNum); // 함수가 실행되면 서버 통신시 임시로 관리하기 위해 담아 두었던 tmpNum State의 값으로 startNum 설정
+  };
+
   if (!isLoading) {
     return <Loading />;
   }
@@ -63,8 +80,6 @@ function App() {
           <main className={classes.main}>
             <Routes>
               <Route>
-                {/* element={<AdminHome />} */}
-                {/* <Admin /> */}
                 <Route path="/admin" element={<Admin />} />
                 <Route
                   path="/"
@@ -96,7 +111,13 @@ function App() {
                 <Route path="/products/:getIdx" element={<Product />} />
                 <Route
                   path="/productsBest"
-                  element={<ProductsBest bestProduct={bestProduct} />}
+                  element={
+                    <ProductsBest
+                      bestProduct={bestProduct}
+                      hasMore={hasMore}
+                      onStateNum={handleStateNum}
+                    />
+                  }
                 />
                 <Route path="/categories" element={<ProductsCategory />} />
                 <Route path="/cart" element={<ProductCart />} />
