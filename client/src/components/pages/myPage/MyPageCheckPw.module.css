@@ -70,3 +70,15 @@
 .checkpw-wrap-button button:last-child {
   background-color: rgb(206, 202, 202);
 }
+
+@media (max-width: 1020px) {
+  .modal {
+    left: 15%;
+  }
+}
+
+@media (max-width: 750px) {
+  .modal {
+    left: 5%;
+  }
+}

@@ -24,6 +24,7 @@
   font-weight: bold;
   margin-bottom: 50px;
   letter-spacing: 22px;
+  text-align: center;
 }
 
 .orderComplete-recript-section {
@@ -125,4 +126,40 @@
 .orderComplete-barcode img {
   width: 350px;
   height: 100px;
+}
+
+@media (max-width: 1020px) {
+  .orderComplete-title {
+    font-size: 24px;
+  }
+  .orderComplete-recript-company,
+  .orderComplete-recript-recript {
+    font-size: 26px;
+  }
+
+  .orderComplete-recript-date {
+    font-size: 16px;
+  }
+
+  .orderComplete-barcode img {
+    width: 300px;
+  }
+}
+
+@media (max-width: 750px) {
+  .orderComplete-title {
+    font-size: 20px;
+  }
+  .orderComplete-recript-company,
+  .orderComplete-recript-recript {
+    font-size: 22px;
+  }
+
+  .orderComplete-recript-date {
+    font-size: 14px;
+  }
+
+  .orderComplete-barcode img {
+    width: 220px;
+  }
 }

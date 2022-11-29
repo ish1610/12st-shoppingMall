@@ -8,6 +8,10 @@
   height: 550px;
 }
 
+.sliderBanner p {
+  text-align: center;
+}
+
 .sliderBanner-banner ul li button::before {
   color: white;
 }
@@ -70,4 +74,101 @@
   background-size: cover;
   background-repeat: repeat;
   background-position: center;
+}
+
+@media (min-width: 751px) and (max-width: 1020px) {
+  .sliderBanner {
+    height: 400px;
+  }
+
+  .sliderBanner-banner {
+    height: 350px;
+  }
+
+  .sliderBanner-banner__item1 {
+    height: 400px;
+  }
+
+  .sliderBanner-banner__item1__title {
+    font-size: 36px;
+
+    margin-top: 50px;
+    line-height: 1.5;
+  }
+
+  .sliderBanner-banner__item1__sale {
+    color: white;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .sliderBanner-banner__item1__count {
+    font-size: 40px;
+    color: white;
+  }
+
+  .sliderBanner-banner__item1__subTitle {
+    font-size: 20px;
+  }
+
+  .sliderBanner-banner__item1__period {
+    font-size: 20px;
+  }
+
+  .sliderBanner-banner__item2 {
+    height: 300px;
+  }
+
+  .sliderBanner-banner__item3 {
+    height: 300px;
+  }
+}
+
+@media (max-width: 750px) {
+  .sliderBanner {
+    height: 300px;
+
+    margin-bottom: 100px;
+  }
+
+  .sliderBanner-banner {
+    height: 250px;
+  }
+
+  .sliderBanner-banner__item1 {
+    height: 300px;
+  }
+
+  .sliderBanner-banner__item1__title {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+
+    margin-top: 50px;
+    line-height: 1.5;
+  }
+
+  .sliderBanner-banner__item1__sale {
+    font-size: 30px;
+  }
+
+  .sliderBanner-banner__item1__count {
+    font-size: 40px;
+  }
+
+  .sliderBanner-banner__item1__subTitle {
+    font-size: 16px;
+  }
+
+  .sliderBanner-banner__item1__period {
+    font-size: 16px;
+  }
+
+  .sliderBanner-banner__item2 {
+    height: 300px;
+  }
+
+  .sliderBanner-banner__item3 {
+    height: 300px;
+  }
 }

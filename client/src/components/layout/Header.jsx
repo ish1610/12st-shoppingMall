@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiShoppingCart2Line } from "react-icons/ri";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 import classes from "./Header.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -35,14 +36,6 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      {ishShownCartegory && (
-        <HeaderCartegory
-          onHide={() => {
-            setIsShowncategory(false);
-          }}
-        />
-      )}
-
       <header className={classes.header}>
         <div className={classes["header-wrap-left"]}>
           <div className={classes["header-logo"]} onClick={() => navigate("/")}>
@@ -84,6 +77,18 @@ const Header = () => {
             onClick={() => navigate("/cart")}
             className={classes["header-control"]}
           />
+
+          <GiHamburgerMenu
+            className={`${classes["header-control"]} ${classes["triger"]}`}
+            onClick={() => setIsShowncategory(true)}
+          />
+
+          {ishShownCartegory && (
+            <HeaderCartegory
+              ishShownCartegory={ishShownCartegory}
+              setIsShowncategory={setIsShowncategory}
+            />
+          )}
         </div>
       </header>
     </React.Fragment>

@@ -17,3 +17,31 @@
   font-size: 36px;
   font-weight: bold;
 }
+
+@media (max-width: 1020px) {
+  .myPageNullMsg {
+    height: 400px;
+  }
+
+  .myPageNullMsg img {
+    width: 90px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 750px) {
+  .myPageNullMsg {
+    height: 300px;
+  }
+
+  .myPageNullMsg img {
+    width: 60px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

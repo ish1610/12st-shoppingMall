@@ -1,9 +1,9 @@
 .nav {
   border-bottom: 1px solid var(--navy-color);
   height: 60px;
-  padding: 0 50px;
+  padding: 0 20px;
   margin-bottom: 50px;
-  min-width: 1400px;
+  width: 100%;
   font-size: 15px;
 
   display: flex;
@@ -16,7 +16,7 @@
 }
 
 .nav-category a {
-  margin-left: 20px;
+  margin-left: 10px;
   color: var(--navy-color);
   display: inline-block;
 
@@ -82,4 +82,39 @@
 .nav-Login-admin__icon {
   align-items: center;
   margin-right: 5px;
+}
+
+@media (max-width: 1020px) {
+  .nav {
+    width: 1020px;
+    justify-content: flex-end;
+  }
+
+  .nav-category {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .nav {
+    width: 750px;
+    font-size: 12px;
+  }
+
+  .nav-Login span {
+    margin-left: 10px;
+  }
+  .nav-nonLogin a {
+    margin-left: 10px;
+  }
+
+  .nav-onOff {
+    border: 2px solid var(--navy-color);
+    border-radius: 50px;
+    width: 70px;
+    margin-left: 20px;
+
+    font-size: 12px;
+    align-items: center;
+  }
 }

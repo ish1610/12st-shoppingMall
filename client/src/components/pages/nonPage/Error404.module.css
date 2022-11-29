@@ -25,3 +25,21 @@
   color: black;
   letter-spacing: 10px;
 }
+
+@media (max-width: 1020px) {
+  .error404-wrap h1 {
+    font-size: 40px;
+    width: 70%;
+
+    letter-spacing: 5px;
+  }
+}
+
+@media (max-width: 750px) {
+  .error404-wrap h1 {
+    font-size: 30px;
+    width: 75%;
+
+    letter-spacing: 5px;
+  }
+}

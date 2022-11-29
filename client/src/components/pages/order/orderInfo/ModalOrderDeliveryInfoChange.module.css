@@ -100,7 +100,7 @@
 
 .modalOrderDeliveryInfoChange-control button {
   padding: 16px 32px;
-  font-weight: bold;
+
   border-radius: 5px;
 }
 
@@ -112,4 +112,36 @@
 .modalOrderDeliveryInfoChange-control__storage {
   background-color: var(--navy-color);
   color: white;
+}
+
+@media (max-width: 1020px) {
+  .modalOrderDeliveryInfoChange header {
+    height: 60px;
+    font-size: 16px;
+  }
+
+  .modalOrderDeliveryInfoChange-err {
+    font-size: 14px;
+  }
+
+  .modalOrderDeliveryInfoChange-control {
+    padding-bottom: 30px;
+  }
+
+  .modalOrderDeliveryInfoChange-control button {
+    padding: 8px 22px;
+
+    border-radius: 5px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 750px) {
+  .modalOrderDeliveryInfoChange header {
+    font-size: 14px;
+  }
+
+  .modalOrderDeliveryInfoChange-err {
+    font-size: 12px;
+  }
 }

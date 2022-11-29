@@ -25,3 +25,18 @@
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
+
+@media (max-width: 1020px) {
+  .orderCard span,
+  .orderCard select {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 750px) {
+  .orderCard span,
+  .orderCard select {
+    font-size: 14px;
+    width: 300px;
+  }
+}

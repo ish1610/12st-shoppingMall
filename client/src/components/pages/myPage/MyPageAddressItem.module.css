@@ -84,3 +84,18 @@ input {
 .err {
   margin-left: 140px;
 }
+
+@media (max-width: 750px) {
+  .MyPageAddressItem {
+    width: 620px;
+  }
+
+  .address-item-addr {
+    width: 620px;
+
+    display: flex;
+
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+}

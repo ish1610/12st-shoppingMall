@@ -105,3 +105,58 @@
 
   cursor: pointer;
 }
+
+@media (max-width: 1020px) {
+  .searchItem-img {
+    height: 150px;
+  }
+
+  .searchItem-info-mallname {
+    font-size: 12px;
+  }
+
+  .searchItem-info-title {
+    font-size: 14px;
+
+    overflow: hidden;
+
+    height: 40px;
+  }
+
+  .searchItem-info-price {
+    font-size: 14px;
+  }
+
+  .searchItem-info-realPrice {
+    font-size: 18px;
+
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+
+  .searchItem-info-review {
+    font-size: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.5;
+
+    position: relative;
+  }
+
+  .searchItem-info-review__star {
+    display: none;
+  }
+
+  .searchItem-info-review__split {
+    display: none;
+  }
+
+  .searchItem-info-review__cart {
+    font-size: 24px;
+
+    position: absolute;
+    right: 0;
+  }
+}

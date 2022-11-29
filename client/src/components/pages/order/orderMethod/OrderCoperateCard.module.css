@@ -25,3 +25,26 @@
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
+
+.orderCoperateCard-info {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+@media (max-width: 1020px) {
+  .orderCoperateCard span,
+  .orderCoperateCard select,
+  .orderCoperateCard-info {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 750px) {
+  .orderCoperateCard span,
+  .orderCoperateCard select,
+  .orderCoperateCard-info {
+    font-size: 14px;
+    width: 300px;
+  }
+}

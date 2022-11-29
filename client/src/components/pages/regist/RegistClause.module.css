@@ -39,3 +39,38 @@
   width: 20px;
   height: 20px;
 }
+
+@media (max-width: 1020px) {
+  .RegistClause h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .RegistClause-content {
+    width: 600px;
+  }
+
+  .RegistClause-content-check input {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 750px) {
+  .RegistClause h3 {
+    font-size: 14px;
+  }
+
+  .RegistClause-content {
+    width: 450px;
+  }
+  .RegistClause-content p {
+    padding: 16px;
+    line-height: 1.5;
+  }
+
+  .RegistClause-content-check input {
+    width: 12px;
+    height: 12px;
+  }
+}

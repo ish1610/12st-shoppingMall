@@ -13,3 +13,9 @@
   font-weight: bold;
   color: rgb(37, 37, 37);
 }
+
+@media (max-width: 750px) {
+  .noneReview-content {
+    font-size: 16px;
+  }
+}

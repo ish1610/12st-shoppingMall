@@ -23,7 +23,9 @@ const OrderCoperateCard = () => {
         <select name="" id="">
           <option value="일시불">일시불</option>
         </select>
-        <span>법인카드는 일시불 결제만 가능합니다</span>
+        <p className={classes["orderCoperateCard-info"]}>
+          법인카드는 일시불 결제만 가능합니다
+        </p>
       </div>
     </Card>
   );

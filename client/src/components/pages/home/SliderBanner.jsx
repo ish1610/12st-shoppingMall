@@ -9,13 +9,13 @@ const SliderBanner = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: "0px",
+    // speed: 500,
+    // autoplay: true,
+    // autoplaySpeed: 4000,
+    // slidesToShow: 1,
+    // slidesToScroll: 1,
+    // centerMode: true,
+    // centerPadding: "0px",
   };
 
   return (

@@ -25,11 +25,13 @@
 
 .check-content-item div:first-child {
   font-size: 18px;
+  font-weight: bold;
 }
 
 .check-content-item span {
   font-size: 28px;
   font-weight: bold;
+  color: var(--red-color);
 }
 
 .check-wrap-date {
@@ -80,4 +82,34 @@
   justify-content: flex-end;
 
   align-items: center;
+}
+
+@media (max-width: 1020px) {
+  .MyPointCheck {
+    margin-left: 0px;
+  }
+
+  .check-content-wrap {
+    margin-bottom: 30px;
+
+    width: 900px;
+  }
+
+  .pointcheck-content-null {
+    margin-top: 50px;
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 750px) {
+  .check-content-wrap {
+    margin-bottom: 30px;
+
+    width: 600px;
+  }
+
+  .pointcheck-content-null {
+    margin-top: 50px;
+    margin-left: 0px;
+  }
 }

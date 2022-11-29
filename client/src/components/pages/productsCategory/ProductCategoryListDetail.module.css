@@ -11,3 +11,27 @@
   padding-bottom: 10px;
   border-bottom: 1px solid RGB(230, 230, 230);
 }
+
+@media (max-width: 1020px) {
+  .productsCategory-categoryList-items {
+    margin-top: 20px;
+  }
+
+  .productsCategory-categoryList-items li {
+    padding: 5px 0;
+
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 750px) {
+  .productsCategory-categoryList-items {
+    margin-top: 10px;
+  }
+
+  .productsCategory-categoryList-items li {
+    padding: 5px 0;
+
+    font-size: 12px;
+  }
+}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 import Profile from "../../../assets/icons/siba.png";
 
@@ -8,15 +8,18 @@ import MyPageSide from "./MyPageSide";
 
 import { FaCog } from "react-icons/fa";
 import { getUser } from "../../../util/getUser";
-import { authCheck, cookieCheck } from "../../../util/authCheck";
+import { authCheck } from "../../../util/authCheck";
+
+import { FaHamburger } from "react-icons/fa";
+
 import classes from "./MyPage.module.css";
 
 const MyPage = () => {
-  const navigate = useNavigate();
   const [user, setUser] = useState({});
   const mile = parseInt(user.uMile);
   const [basketCount, setBasketCount] = useState("");
   const [boardData, setBoardData] = useState([]);
+  const [isShowCategory, setIsShowCategory] = useState(false);
 
   useEffect(() => {
     authCheck();
@@ -107,8 +110,20 @@ const MyPage = () => {
           </div>
         </div>
       </div>
+      <FaHamburger
+        className={classes.triger}
+        onClick={() => setIsShowCategory(true)}
+      />
       <div className={classes["mypage-wrap-bottom"]}>
-        <MyPageSide />
+        {isShowCategory && (
+          <MyPageSide
+            isShowCategory={isShowCategory}
+            setIsShowCategory={() => setIsShowCategory(false)}
+          />
+        )}
+
+        <MyPageSide className={classes["aside_1400"]} />
+
         <Outlet />
       </div>
     </React.Fragment>

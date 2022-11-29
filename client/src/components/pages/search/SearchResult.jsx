@@ -35,7 +35,7 @@ const SearchResult = () => {
           <img src={sibaicon} alt="시바 그림" />
 
           <p className={classes["searchResult-noneItem__content"]}>
-            시바! 찾으시는 결과가 없네요.
+            찾으시는 결과가 없네요.
           </p>
         </div>
       )}

@@ -66,3 +66,51 @@
   font-weight: bold;
   margin-bottom: 30px;
 }
+
+@media (max-width: 1020px) {
+  .orderProduct h4 {
+    font-size: 18px;
+  }
+
+  .orderProduct-info__deliveryDate {
+    height: 40px;
+
+    font-size: 15px;
+  }
+
+  .orderProduct-info__content {
+    padding: 16px;
+  }
+
+  .orderProduct-info__content__img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .orderProduct-info-content__info {
+    padding: 0;
+  }
+
+  .orderProduct-info-content__info p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 750px) {
+  .orderProduct h4 {
+    font-size: 16px;
+  }
+
+  .orderProduct-info__deliveryDate {
+    font-size: 14px;
+  }
+
+  .orderProduct-info__content {
+    padding: 14px;
+  }
+
+  .orderProduct-info__content__img {
+    width: 140px;
+    height: 100px;
+  }
+}

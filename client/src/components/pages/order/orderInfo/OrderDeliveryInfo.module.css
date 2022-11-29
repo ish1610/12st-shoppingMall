@@ -51,15 +51,6 @@
   padding: 15px 16px;
 }
 
-.orderDeliveryInfo-table__changeMemo {
-  padding: 4px 8px;
-  border: 1px solid #999;
-  font-family: inherit;
-  border-radius: 5px;
-  font-size: 12px;
-  margin-left: 10px;
-}
-
 .modalChangeAddr {
   display: flex;
   flex-direction: column;
@@ -151,4 +142,76 @@
   border: 1px solid var(--navy-color);
   padding: 5px 18px;
   border-radius: 5px;
+}
+
+@media (max-width: 1020px) {
+  .orderDeliveryInfo-deliveryChange h4 {
+    font-size: 18px;
+  }
+
+  .orderDeliveryInfo-deliveryChange button {
+    padding: 3px 8px;
+
+    font-size: 12px;
+  }
+
+  .orderDeliveryInfo-table {
+    font-size: 12px;
+  }
+
+  .modalChangeAddr-header {
+    height: 60px;
+
+    font-size: 16px;
+  }
+
+  .modalChangeAddr-section__item {
+    margin-bottom: 16px;
+    padding: 16px;
+  }
+  .modalChangeAddr-section-title,
+  .modalChangeAddr-section__item__name,
+  .modalChangeAddr-section__item__add,
+  .modalChangeAddr-section__item__additionalAddr,
+  .modalChangeAddr-section__item__phone,
+  .modalChangeAddr-section__item__memo .modalChangeAddr-section__item__memo,
+  .modalChangeAddr-section__item__select button {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 750px) {
+  .orderDeliveryInfo-deliveryChange h4 {
+    font-size: 16px;
+  }
+
+  .orderDeliveryInfo-deliveryChange button {
+    padding: 2px 8px;
+
+    font-size: 10px;
+  }
+
+  .orderDeliveryInfo-table {
+    font-size: 12px;
+  }
+
+  .modalChangeAddr-header {
+    height: 50px;
+
+    font-size: 14px;
+  }
+
+  .modalChangeAddr-section__item {
+    margin-bottom: 14px;
+    padding: 14px;
+  }
+  .modalChangeAddr-section-title,
+  .modalChangeAddr-section__item__name,
+  .modalChangeAddr-section__item__add,
+  .modalChangeAddr-section__item__additionalAddr,
+  .modalChangeAddr-section__item__phone,
+  .modalChangeAddr-section__item__memo .modalChangeAddr-section__item__memo,
+  .modalChangeAddr-section__item__select button {
+    font-size: 14px;
+  }
 }

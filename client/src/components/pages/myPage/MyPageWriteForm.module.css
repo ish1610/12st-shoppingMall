@@ -55,3 +55,35 @@
   font-size: 16px;
   border-radius: 5px;
 }
+
+@media (max-width: 1020px) {
+  .write-wrap-content {
+    width: 880px;
+  }
+
+  .write-content-label div:first-child {
+    margin-right: 45px;
+  }
+
+  .write-content-label div:last-child {
+    width: 700px;
+  }
+
+  .write-content-label textarea {
+    height: 400px;
+  }
+}
+
+@media (max-width: 750px) {
+  .write-wrap-content {
+    width: 620px;
+  }
+
+  .write-content-label div:last-child {
+    width: 450px;
+  }
+
+  .write-content-label textarea {
+    height: 250px;
+  }
+}

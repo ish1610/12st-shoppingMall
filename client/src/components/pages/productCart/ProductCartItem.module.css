@@ -85,3 +85,101 @@
 
   border-top: 1px solid rgb(220, 220, 220);
 }
+
+@media (max-width: 1020px) {
+  .productcart-noneItem {
+    height: 300px;
+  }
+
+  .productcart-noneItem img {
+    width: 60px;
+  }
+  .productcart-noneItem-content {
+    font-size: 22px;
+  }
+
+  .productcart-item-check {
+    width: 18px;
+    height: 18px;
+  }
+
+  .productcart-item-mallName {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .productcart-item-info {
+    padding: 20px 30px;
+  }
+
+  .productcart-item-info__img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .productcart-item-info__title {
+    font-size: 16px;
+  }
+
+  .productcart-item-price {
+    margin: 10px 30px;
+    font-size: 14px;
+  }
+
+  .productcart-item-deliveryFee {
+    text-align: center;
+
+    padding: 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 750px) {
+  .productcart-noneItem {
+    height: 300px;
+  }
+
+  .productcart-noneItem img {
+    width: 40px;
+  }
+  .productcart-noneItem-content {
+    font-size: 18px;
+  }
+
+  .productcart-item-check {
+    width: 14px;
+    height: 14px;
+    top: 12px;
+    left: 14px;
+  }
+
+  .productcart-item-mallName {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .productcart-item-info {
+    padding: 12px 20px;
+  }
+
+  .productcart-item-info__img {
+    height: 80px;
+  }
+
+  .productcart-item-info__title {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .productcart-item-price {
+    margin: 10px 20px;
+    font-size: 12px;
+  }
+
+  .productcart-item-deliveryFee {
+    text-align: center;
+
+    padding: 12px;
+    font-size: 12px;
+  }
+}

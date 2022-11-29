@@ -231,3 +231,169 @@
   color: var(--navy-color);
   transition: 0.6s;
 }
+
+@media (max-width: 1020px) {
+  .sectionUserInfoInput-duplication,
+  .sectionUserInfoInput-confirmation,
+  .regist-btn-searchAdress {
+    height: 40px;
+    width: 60px;
+  }
+
+  .sectionUserInfoInput-duplication {
+    right: 60px;
+    top: 0;
+  }
+
+  .sectionUserInfoInput-phone {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    width: 330px;
+    position: relative;
+    font-size: 16px;
+  }
+
+  .sectionUserInfoInput-phone input {
+    font-size: 16px;
+    width: 200px;
+
+    padding: 10px 14px;
+  }
+
+  .sectionUserInfoInput-confirmation {
+    right: 60px;
+  }
+
+  .sectionUserInfoInput-zipcode {
+    position: relative;
+    width: 240px;
+  }
+
+  .sectionUserInfoInput-zipcode input {
+    font-size: 16px;
+    width: 160px;
+  }
+
+  .sectionUserInfoInput-address input {
+    margin-right: 10px;
+    width: 350px;
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+
+  .sectionUserInfoInput-email-adress {
+    right: 112px;
+  }
+
+  .sectionUserInfoInput-control-selected {
+    padding: 10px 14px;
+
+    font-size: 16px;
+  }
+
+  .sectionUserInfoInput-control-noneSelected__input {
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+
+  .regist-control button {
+    width: 200px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 750px) {
+  .sectionUserInfoInput-duplication,
+  .sectionUserInfoInput-confirmation,
+  .regist-btn-searchAdress {
+    height: 30px;
+  }
+
+  .sectionUserInfoInput-duplication {
+    right: 80px;
+  }
+
+  .sectionUserInfoInput-phone {
+    width: 330px;
+    position: relative;
+  }
+
+  .sectionUserInfoInput-phone input {
+    font-size: 14px;
+    width: 180px;
+
+    padding: 8px 12px;
+  }
+
+  .sectionUserInfoInput-confirmation {
+    right: 80px;
+  }
+
+  .regist-btn-searchAdress {
+    position: absolute;
+    right: 30px;
+    top: 2px;
+  }
+
+  .sectionUserInfoInput-zipcode {
+    position: relative;
+    width: 240px;
+  }
+
+  .sectionUserInfoInput-zipcode input {
+    font-size: 14px;
+    width: 140px;
+  }
+
+  .sectionUserInfoInput-address input {
+    margin-right: 10px;
+    width: 350px;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .sectionUserInfoInput-email-adress {
+    right: 28px;
+  }
+
+  .sectionUserInfoInput-control {
+    position: relative;
+    width: 200px;
+  }
+
+  .sectionUserInfoInput-control-selected {
+    padding: 8px 12px;
+
+    font-size: 14px;
+
+    width: 200px;
+  }
+
+  .sectionUserInfoInpu-control-items {
+    width: 100%;
+
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+
+  .sectionUserInfoInpu-control-items li button {
+    text-align: center;
+    width: 100%;
+    padding: 5px 10px;
+
+    border-radius: 8px;
+  }
+
+  .sectionUserInfoInput-control-noneSelected__input {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .regist-control button {
+    width: 200px;
+    height: 40px;
+  }
+}

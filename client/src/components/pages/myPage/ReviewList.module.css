@@ -33,3 +33,27 @@
   align-items: center;
   margin-bottom: 20px;
 }
+
+@media (max-width: 1020px) {
+  .ReviewList {
+    margin-left: 0px;
+  }
+
+  .review-list-wrap-table {
+    width: 880px;
+  }
+
+  .review-content-null {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 750px) {
+  .review-list-wrap-table {
+    width: 620px;
+  }
+
+  .review-content-null {
+    margin-top: 16px;
+  }
+}

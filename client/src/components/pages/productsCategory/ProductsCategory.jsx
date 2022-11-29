@@ -91,12 +91,6 @@ const ProductsCategory = () => {
             products={products}
           />
         </InfiniteScroll>
-        {/* <section>
-          <p>섹션명</p>
-          <div className={classes["productsCategory-products"]}>
-            
-          </div>
-        </section> */}
       </div>
     </div>
   );

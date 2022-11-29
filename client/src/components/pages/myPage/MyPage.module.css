@@ -100,3 +100,58 @@
   display: flex;
   margin-top: 80px;
 }
+
+.aside_1400 {
+  display: block;
+}
+
+.triger {
+  display: none;
+  margin-left: 20px;
+  font-size: 32px;
+  color: var(--navy-color);
+  cursor: pointer;
+}
+
+@media (max-width: 1020px) {
+  .triger {
+    display: block;
+  }
+
+  .aside_1400 {
+    display: none;
+  }
+
+  .triger:hover {
+    color: var(--red-color);
+  }
+  .mypage-wrap-bottom {
+    display: flex;
+    margin-top: 30px;
+
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  /* content */
+
+  .mypage-quick-item {
+    width: 23%;
+    font-size: 18px;
+  }
+
+  .mypage-quick-item a {
+    color: var(--navy-color);
+  }
+
+  .mypage-quick-item a:hover {
+    text-decoration: none;
+  }
+
+  .mypage-quick-item div:last-child {
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+}

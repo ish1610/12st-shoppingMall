@@ -122,3 +122,19 @@
   background-color: white;
   border: 1px solid var(--navy-color);
 }
+
+@media (max-width: 1020px) {
+  .OrderItem {
+    width: 900px;
+    padding: 25px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 750px) {
+  .OrderItem {
+    width: 600px;
+    padding: 25px;
+    margin-bottom: 24px;
+  }
+}

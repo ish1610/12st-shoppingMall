@@ -15,7 +15,7 @@
 
 .searchResult-searchKeyword {
   margin-bottom: 30px;
-  padding: 30px 0;
+  padding: 30px 20px;
   background-color: var(--navy-color);
   color: white;
   font-size: 20px;
@@ -50,4 +50,45 @@
   font-size: 22px;
   font-weight: bold;
   color: rgb(180, 180, 180);
+}
+
+@media (max-width: 1020px) {
+  .searchResult-title {
+    font-size: 16px;
+  }
+
+  .searchResult-searchKeyword {
+    font-size: 18px;
+  }
+
+  .searchResult-items {
+    grid-template-columns: repeat(4, 210px);
+
+    padding-top: 50px;
+  }
+
+  .searchResult-noneItem {
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .searchResult-noneItem img {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 750px) {
+  .searchResult-searchKeyword {
+    font-size: 16px;
+  }
+
+  .searchResult-items {
+    grid-template-columns: repeat(3, 205px);
+    padding-top: 50px;
+  }
 }

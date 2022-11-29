@@ -81,3 +81,63 @@
 
   cursor: pointer;
 }
+
+@media (max-width: 1020px) {
+  .saleProduct {
+    padding: 10px;
+    display: flex;
+  }
+
+  .saleProduct-img {
+    width: 100px;
+    height: 100px;
+    margin-right: 16px;
+  }
+
+  .saleProduct-info-price {
+    font-size: 20px;
+
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .saleProduct-info-price__percent {
+    margin-left: 10px;
+  }
+
+  .saleProduct-info-title {
+    font-size: 14px;
+    height: 40px;
+    overflow: hidden;
+
+    margin-bottom: 10px;
+  }
+
+  .saleProduct-info-review {
+    font-size: 10px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-bottom: 0;
+  }
+
+  .saleProduct-info-review__star {
+    display: none;
+  }
+
+  .saleProduct-info-review__split {
+    display: none;
+  }
+
+  .saleProduct-info-review__cart {
+    font-size: 20px;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+
+    cursor: pointer;
+  }
+}

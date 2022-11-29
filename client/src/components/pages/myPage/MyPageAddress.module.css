@@ -1,5 +1,4 @@
 .MyPageAddress {
-  margin-top: 20px;
   margin-left: 30px;
 }
 
@@ -8,7 +7,7 @@
 }
 
 .address-wrap-button {
-  width: 400px;
+  width: 200px;
 
   display: flex;
   justify-content: center;
@@ -20,11 +19,11 @@
 
 .address-wrap-button button {
   font-weight: bold;
-  font-size: 22px;
+  font-size: 18px;
   width: 100%;
   border: 1px solid var(--navy-color);
   border-radius: 10px;
-  padding: 15px 0;
+  padding: 10px 0;
 }
 
 .address-content-null {
@@ -50,7 +49,51 @@
 .default-addr {
   border-top: 2px solid gray;
 
-  margin-top: 100px;
-  padding-top: 30px;
+  margin-top: 50px;
+  padding-top: 50px;
   width: 800px;
+}
+
+@media (max-width: 1020px) {
+  .MyPageAddress {
+    margin-left: 0px;
+  }
+
+  .address-wrap-content {
+    width: 880px;
+  }
+
+  .default-addr {
+    margin-top: 30px;
+    padding-top: 30px;
+
+    width: 880px;
+  }
+}
+
+@media (max-width: 750px) {
+  .MyPageAddress {
+    margin-left: 0px;
+  }
+
+  .address-wrap-content {
+    width: 620px;
+  }
+
+  .address-wrap-button {
+    width: 200px;
+
+    display: flex;
+    justify-content: center;
+
+    margin-top: 50px;
+    margin-left: 220px;
+    margin-bottom: 50px;
+  }
+
+  .default-addr {
+    margin-top: 30px;
+
+    width: 620px;
+  }
 }
