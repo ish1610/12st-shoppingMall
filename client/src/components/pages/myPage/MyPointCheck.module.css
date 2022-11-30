@@ -74,7 +74,6 @@
 
 .pointcheck-content-null {
   margin-top: 50px;
-  margin-left: 330px;
 }
 
 .select-wrap {
@@ -100,7 +99,6 @@
     margin-left: 0px;
   }
 }
-
 @media (max-width: 750px) {
   .check-content-wrap {
     margin-bottom: 30px;
