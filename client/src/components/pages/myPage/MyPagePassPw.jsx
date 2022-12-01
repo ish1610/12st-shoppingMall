@@ -8,6 +8,7 @@ import classes from "./MyPagePassPw.module.css";
 import axios from "axios";
 
 import AddressModal from "../../layout/AddressModal";
+import useUserInput from "../../../hooks/use-userInput";
 
 const MyPagePassPw = ({ user, setUserPw }) => {
   const navigate = useNavigate();
@@ -18,368 +19,113 @@ const MyPagePassPw = ({ user, setUserPw }) => {
     setShowAddr(false);
   };
 
-  //유저 정보
-  const [uName, setUname] = useState(user.uName);
-  const [uPasswd, setUpasswd] = useState(user.uPasswd);
-  const [CheckPasswd, setCheckPasswd] = useState("");
-  const [uPhone, setUphone] = useState(user.uPhone);
-  const [uEmail, setUemail] = useState(user.uEmail);
-  const [uBirth, setUbirth] = useState(user.uBirth);
-  const [uZipcode, setUzipcode] = useState(user.uZipcode);
-  const [uAddress, setUaddress] = useState(user.uAddress);
-  const [uAdditionalAddr, setUadditionalAddr] = useState(user.uAdditionalAddr);
-
-  const updateUname = useRef();
-  const updateUbirth = useRef();
-  const updateUpasswd = useRef();
-  const updateUpasswdCheck = useRef();
-  const updateUphone = useRef();
-  const updateUemail = useRef();
-  const updateZipcode = useRef();
-  const updateAddrCode = useRef();
-  const updateUdetail = useRef();
-
-  //주소 업데이트
-  const [updateAddr, setUpdateAddr] = useState(false);
-
-  // 주소 값 받아오기
-  const [inputZipCode, setInputZipCode] = useState("");
-  const [inputAddr, setInputAddr] = useState("");
-
   //pw on/off
   const [showPw, setShowPw] = useState(false);
   const [showCkPw, setShowCkPw] = useState(false);
 
-  //에러상태
-  const [nameErr, setNameErr] = useState(false);
-  const [pwErr, setPwErr] = useState(false);
-  const [pwCheckErr, setPwCheckErr] = useState(false);
-  const [phoneErr, setPhoneErr] = useState(false);
-  const [addrErr, setAddrErr] = useState(false);
-  const [emailErr, setEmailErr] = useState(false);
-  const [birthErr, setBirthErr] = useState(false);
+  // 커스텀 훅
+  const { value, isValid, hasError, handleValueChange, handleInputBlur } =
+    useUserInput();
 
-  //에러메세지
-  const [errNameMsg, setErrNameMsg] = useState("");
-  const [errPwMsg, setErrPwMsg] = useState("");
-  const [errPwCheckMsg, setErrPwCheckMsg] = useState("");
-  const [errPhoneMsg, setErrPhoneMsg] = useState("");
-  const [errAddrMsg, setErrAddrMsg] = useState("");
-  const [errEmailMsg, setErrEmailMsg] = useState("");
-  const [errBirthMsg, setErrBirthMsg] = useState("");
+  // 사용자 입력값 State
+  const {
+    enteredName,
+    enteredPasswd,
+    enteredRePasswd,
+    enteredEmail,
 
-  //주소 모달에서 값 받아오기
-  const getAddrInfo = () => {
-    if (inputZipCode === "") {
-      updateZipcode.current.value = uZipcode;
-    } else {
-      updateZipcode.current.value = inputZipCode;
-      setUzipcode(inputZipCode);
-    }
-    if (inputAddr === "") {
-      updateAddrCode.current.value = uAddress;
-    } else {
-      updateAddrCode.current.value = inputAddr;
-      setUaddress(inputAddr);
-      updateUdetail.current.value = "";
-      setUadditionalAddr("");
-    }
-  };
+    enteredPhone,
+    enteredZipcode,
+    enteredAddress,
+    enteredAdditionalAddress,
+    enteredBirth,
+  } = value;
 
-  //주소 받아온 값 변경 될 떄마다 표시
-  useEffect(() => {
-    if (updateAddr === true) {
-      getAddrInfo();
-    }
-  }, [inputZipCode]);
+  // 사용자 입력값 유효성 State (true : 유효)
+  const {
+    nameIsValid,
+    passwdIsValid,
+    rePasswdIsValid,
+    emailIsValid,
+    additionalEmailIsValid,
+    phoneIsValid,
+    additionalAddressIsValid,
+    birthIsValid,
+  } = isValid;
 
-  //수정 유효성 검사
+  // 사용자에게 피드백 전달 여부 (true : 피드백 전달 - 사용자 입력 유효하지 않고 input 태그 터치)
+  const {
+    nameHasError,
+    passwdHasError,
+    rePasswdHasError,
+    emailHasError,
+    phoneHasError,
+    additionalAddressHasError,
+    birthHasError,
+  } = hasError;
 
-  const inputCheck = (e) => {
-    const nullMsg = "공백값은 입력할수 없습니다. ";
-    const newInfoName = e.target.name;
-    const newInfo = e.target.value;
+  // 사용자 입력값 State 변경 (setState - 내부에 e.target.value 포함되어있어서 함수명만 사용하면됨)
+  const {
+    handleNameChange,
+    handlePasswdChange,
+    handleRePasswdChange,
+    handleEmailChange,
 
-    const nullCheck = /\s/; //공백체크
-    const nameCheck = /^[가-힝a-zA-Z]{2,}$/;
-    const pwCheck = /[a-zA-Zㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
-    const numCheck = /[0-9]/g;
-    const spcCheck = /[!@#]/;
-    // const phoneCheck = /^\d{3}\d{3,4}\d{4}$/;
-    const telPhoneCheck = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
-    const emailCheck =
-      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    handlePhoneChange,
+    handleZipcodeChange,
+    handleAddressChange,
+    handleAdditionalAddrChange,
+    handleBirthChange,
+  } = handleValueChange;
 
-    switch (newInfoName) {
-      case "uName":
-        if (nullCheck.exec(newInfo) || newInfo === "") {
-          setUname("");
-          setNameErr(true);
-          setErrNameMsg(nullMsg);
-          updateUname.current.value = "";
-          return;
-        } else if (newInfo.length < 2) {
-          setUname("");
-          setNameErr(true);
-          setErrNameMsg("이름은 최소 2글자 이상 입력해주세요.");
-          return;
-        } else if (newInfo.length > 5) {
-          setUname("");
-          setNameErr(true);
-          setErrNameMsg("이름은 최대 5글자를 넘길수 없습니다.");
-          return;
-        } else if (!nameCheck.exec(newInfo)) {
-          setUname("");
-          setNameErr(true);
-          setErrNameMsg("올바른 이름의 형식이 아닙니다.");
-          return;
-        } else if (nameCheck.exec(newInfo)) {
-          setNameErr(false);
-          setUname(newInfo);
-        }
-        break;
+  // onBlur prop에 전달할 함수
+  const {
+    handleNameBlur,
+    handlePasswdBlur,
+    handleRePasswdBlur,
+    handleEmailBlur,
 
-      case "uBirth":
-        if (nullCheck.exec(newInfo) || newInfo === "") {
-          setUbirth("");
-          setBirthErr(true);
-          setErrBirthMsg(nullMsg);
-          updateUbirth.current.value = "";
-          return;
-        } else if (!numCheck.exec(newInfo)) {
-          setUbirth("");
-          setBirthErr(true);
-          setErrBirthMsg("생년월일은 숫자만 입력 가능합니다.");
-          updateUbirth.current.value = "";
-          return;
-        } else if (newInfo.length != 8) {
-          setUbirth("");
-          setBirthErr(true);
-          setErrBirthMsg("생년월일은 8자리를 입력해 주세요.");
-          return;
-        } else {
-          setBirthErr(false);
-          setUbirth(newInfo);
-        }
-        break;
+    handlePhoneBlur,
+    handleAdditionalAddressBlur,
+    handleBirthBlur,
+  } = handleInputBlur;
 
-      case "uPasswd":
-        // if (nullCheck.exec(newInfo) || newInfo === "" || newInfo === null) {
-        //   setUpasswd("");
-        //   setPwErr(true);
-        //   setErrPwMsg(nullMsg);
-        //   updateUpasswd.current.value = "";
-        //   return;
-        // } else if (!pwCheck.exec(newInfo)) {
-        //   setUpasswd("");
-        //   setPwErr(true);
-        //   setErrPwMsg("문자는 1개이상 포함되어야 합니다.");
-        //   return;
-        // } else if (!numCheck.exec(newInfo)) {
-        //   setUpasswd("");
-        //   setPwErr(true);
-        //   setErrPwMsg("숫자는 1개이상 포함되어야 합니다.");
-        //   return;
-        // } else if (!spcCheck.exec(newInfo)) {
-        //   setUpasswd("");
-        //   setPwErr(true);
-        //   setErrPwMsg(
-        //     "! @ # 중 하나를 포함 해야하며 이외 특수문자는 사용이 불가합니다."
-        //   );
-        //   return;
-        // } else if (newInfo.length <= 7) {
-        //   setUpasswd("");
-        //   setPwErr(true);
-        //   setErrPwMsg("비밀번호는 최소 8글자 이상 입력해주세요. ");
-        //   return;
-        // } else if (newInfo.length > 15) {
-        //   setUpasswd("");
-        //   setPwErr(true);
-        //   setErrPwMsg("비밀번호는 최대 15 자를 넘길수 없습니다.");
-        //   return;
-        // } else if (pwCheck.exec(newInfo)) {
-        //   setPwErr(false);
-        //   setUpasswd(newInfo);
-        //   setErrPwMsg("");
-        // }
+  // hasError에 따른 className 변경
+  const nameInputClasses = nameHasError ? classes.hasError : "";
 
-        if (nullCheck.exec(newInfo) || newInfo === "" || newInfo === null) {
-          setUpasswd("");
-          setPwErr(true);
-          setErrPwMsg(nullMsg);
-          updateUpasswd.current.value = "";
-          return;
-        } else if (!pwCheck.exec(newInfo)) {
-          setUpasswd("");
-          setPwErr(true);
-          setErrPwMsg("문자는 1개이상 포함되어야 합니다.");
-          return;
-        } else if (!numCheck.exec(newInfo)) {
-          setUpasswd("");
-          setPwErr(true);
-          setErrPwMsg("숫자는 1개이상 포함되어야 합니다.");
-          return;
-        } else if (!spcCheck.exec(newInfo)) {
-          setUpasswd("");
-          setPwErr(true);
-          setErrPwMsg(
-            "! @ # 중 하나를 포함 해야하며 이외 특수문자는 사용이 불가합니다."
-          );
-          return;
-        } else if (newInfo.length < 8) {
-          setUpasswd("");
-          setPwErr(true);
-          setErrPwMsg("비밀번호는 최소 8글자 이상 입력해주세요. ");
-          return;
-        } else if (newInfo.length > 15) {
-          setUpasswd("");
-          setPwErr(true);
-          setErrPwMsg("비밀번호는 최대 15 자를 넘길수 없습니다.");
-          return;
-        } else {
-          setPwErr(false);
-          setUpasswd(newInfo);
-          setErrPwMsg("");
-        }
+  const passwdInputClasses = passwdHasError ? classes.hasError : "";
 
-        break;
+  const rePasswdInputClasses = rePasswdHasError ? classes.hasError : "";
 
-      case "CheckPasswd":
-        if (nullCheck.exec(newInfo) || newInfo === "" || newInfo === null) {
-          setCheckPasswd("");
-          setPwCheckErr(true);
-          setErrPwMsg(nullMsg);
-          updateUpasswdCheck.current.value = "";
-          return;
-        } else if (newInfo.length < 8) {
-          setCheckPasswd("");
-          setPwCheckErr(true);
-          setErrPwMsg("비밀번호는 최소 8글자 이상 입력해주세요. ");
-          return;
-        } else if (newInfo.length > 15) {
-          setCheckPasswd("");
-          setPwCheckErr(true);
-          setErrPwMsg("비밀번호는 최대 15 자를 넘길수 없습니다.");
-          return;
-        } else if (!spcCheck.exec(newInfo)) {
-          setCheckPasswd("");
-          setPwCheckErr(true);
-          setErrPwMsg(
-            "! @ # 중 하나를 포함 해야하며 이외 특수문자는 사용이 불가합니다."
-          );
-          return;
-        } else if (!pwCheck.exec(newInfo) || !numCheck.exec(newInfo)) {
-          setCheckPasswd("");
-          setPwCheckErr(true);
-          setErrPwMsg("문자 와 숫자는 1개이상 포함되어야 합니다.");
-          return;
-        } else if (uPasswd !== newInfo) {
-          setCheckPasswd("");
-          setPwCheckErr(true);
-          setErrPwCheckMsg("비밀번호가 일치하지 않습니다.");
-        } else {
-          setPwCheckErr(false);
-          setCheckPasswd(newInfo);
-          setErrPwCheckMsg("");
-        }
-        break;
+  const birthInputClasses = birthHasError ? classes.hasError : "";
 
-      case "uPhone":
-        if (nullCheck.exec(newInfo) || newInfo === "") {
-          setUphone("");
-          setPhoneErr(true);
-          setErrPhoneMsg(nullMsg);
-          updateUphone.current.value = "";
-          return;
-        } else if (!numCheck.exec(newInfo)) {
-          setUphone("");
-          setPhoneErr(true);
-          setErrPhoneMsg("휴대폰번호는 숫자만 입력 가능합니다.");
-          updateUphone.current.value = "";
-          return;
-        } else if (newInfo.length < 11) {
-          setUphone("");
-          setPhoneErr(true);
-          setErrPhoneMsg("휴대폰번호는 10자리에서 11자리를 입력해주세요 ");
-          return;
-        } else if (newInfo.length > 11) {
-          setUphone("");
-          setPhoneErr(true);
-          setErrPhoneMsg("휴대폰번호는 최대 11자리를 넘길수 없습니다. ");
-          return;
-        } else if (!telPhoneCheck.exec(newInfo)) {
-          setUphone("");
-          setPhoneErr(true);
-          setErrPhoneMsg("휴대폰번호 앞자리를 확인해주세요.");
-          return;
-        } else {
-          setPhoneErr(false);
-          setUphone(newInfo);
-        }
-        break;
+  const phoneInputClasses = phoneHasError
+    ? `${classes["sectionUserInfoInput-phone"]} ${classes.hasError}`
+    : classes["sectionUserInfoInput-phone"];
 
-      case "uEmail":
-        if (nullCheck.exec(newInfo) || newInfo === "") {
-          setUemail("");
-          setEmailErr(true);
-          setErrEmailMsg(nullMsg);
+  const additionalAddressClasses = additionalAddressHasError
+    ? classes["additionalAddr-hasError"]
+    : "";
 
-          updateUemail.current.value = "";
-          return;
-        } else if (!emailCheck.exec(newInfo)) {
-          setUemail("");
-          setEmailErr(true);
-          setErrEmailMsg("E-mail이 올바르지 않습니다. ");
-          return;
-        } else {
-          setEmailErr(false);
-          setUemail(newInfo);
-        }
-        break;
+  const emailInputClasses = emailHasError
+    ? `${classes["sectionUserInfoInput-email"]} ${classes.hasError}`
+    : classes["sectionUserInfoInput-email"];
 
-      case "uDetail":
-        if (spcCheck.exec(newInfo)) {
-          updateUdetail.current.value = "";
-          setUadditionalAddr("");
-          setAddrErr(true);
-          setErrAddrMsg("특수 문자를 제외한 정보만 입력해주세요");
-          return;
-        } else {
-          setAddrErr(false);
-          setUadditionalAddr(newInfo);
-        }
-
-        // if (nullCheck.exec(newInfo)) {
-        //   setUadditionalAddr("");
-        //   setAddrErr(true);
-        //   setErrAddrMsg(nullMsg);
-        //   updateUdetail.current.value = "";
-        // } else
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  //마지막 유효성 검사
+  // registIsValid가 false이면 입력 유효성 중 하나는 false
+  let registIsValid =
+    nameIsValid &&
+    passwdIsValid &&
+    rePasswdIsValid &&
+    emailIsValid &&
+    additionalEmailIsValid &&
+    phoneIsValid &&
+    additionalAddressIsValid &&
+    birthIsValid;
 
   const submitUpdate = async (e) => {
     e.preventDefault();
 
-    if (
-      nameErr === true ||
-      birthErr === true ||
-      emailErr === true ||
-      phoneErr === true
-    ) {
-      alert("수정 정보를 확인해주세요");
-    } else if (uPasswd.length > 16) {
-      alert("비밀번호를 입력해주세요.");
-    } else if (CheckPasswd === "" || CheckPasswd != uPasswd) {
-      updateUpasswdCheck.current.focus();
-      alert("비밀번호가 같지않습니다. ");
-    } else {
+    if (!registIsValid) {
       updateUserHandle();
     }
   };
@@ -390,14 +136,14 @@ const MyPagePassPw = ({ user, setUserPw }) => {
     await axios
       .post("http://localhost:5000/mypage/api/updateuser", {
         idx,
-        uName,
-        uPasswd,
-        uPhone,
-        uEmail,
-        uBirth,
-        uZipcode,
-        uAddress,
-        uAdditionalAddr,
+        enteredName,
+        enteredPasswd,
+        enteredRePasswd,
+        enteredEmail,
+        enteredBirth,
+        enteredZipcode,
+        enteredAddress,
+        enteredAdditionalAddress,
       })
       .then((response) => {
         if (response.data.status === 200) {
@@ -422,18 +168,22 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                   <div className={classes["passpw-item-input"]}>
                     <div>
                       <input
+                        id="name"
                         type="text"
-                        ref={updateUname}
-                        defaultValue={uName}
-                        name="uName"
-                        maxLength={5}
-                        minLength={2}
-                        onChange={inputCheck}
+                        text="이름"
+                        className={nameInputClasses}
+                        value={enteredName}
+                        onChange={handleNameChange}
+                        onBlur={handleNameBlur}
                       />
                     </div>
-                    {nameErr && (
-                      <div className={classes["err-msg"]}>{errNameMsg}</div>
-                    )}
+                    <div className={classes["sectionUserInfoInput-feedback"]}>
+                      {nameHasError && (
+                        <p className={classes["sectionUserInfoInput-error"]}>
+                          이름은 최소 2글자에서 최대 5글자 입력이 가능합니다.
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -470,12 +220,13 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                   <div className={classes["passpw-item-input"]}>
                     <div>
                       <input
-                        type={!showPw ? "password" : "text"}
-                        ref={updateUpasswd}
-                        name="uPasswd"
-                        maxLength={15}
-                        minLength={8}
-                        onChange={inputCheck}
+                        id="passwd"
+                        type="password"
+                        text="비밀번호"
+                        className={passwdInputClasses}
+                        value={enteredPasswd}
+                        onChange={handlePasswdChange}
+                        onBlur={handlePasswdBlur}
                       />
                       {!showPw ? (
                         <div className={classes["passwd-show-icon"]}>
@@ -487,13 +238,14 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                         </div>
                       )}
                     </div>
-                    {pwErr && (
-                      <div
-                        className={`${classes["err-msg"]} ${classes["err-pw"]}`}
-                      >
-                        {errPwMsg}
-                      </div>
-                    )}
+                    <div className={classes["sectionUserInfoInput-feedback"]}>
+                      {passwdHasError && (
+                        <p className={classes["sectionUserInfoInput-error"]}>
+                          비밀번호는 8~15글자 입력이 가능하며, ! @ # 중 하나를
+                          포함, 문자와 숫자는 1개 이상 포함되어야합니다.
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -505,12 +257,13 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                   <div className={classes["passpw-item-input"]}>
                     <div>
                       <input
-                        type={!showCkPw ? "password" : "text"}
-                        ref={updateUpasswdCheck}
-                        name="CheckPasswd"
-                        maxLength={15}
-                        minLength={8}
-                        onChange={inputCheck}
+                        id="RePasswd"
+                        type="password"
+                        className={rePasswdInputClasses}
+                        text="비밀번호 재입력"
+                        value={enteredRePasswd}
+                        onChange={handleRePasswdChange}
+                        onBlur={handleRePasswdBlur}
                       />
                       {!showCkPw ? (
                         <div className={classes["passwd-show-icon"]}>
@@ -522,13 +275,13 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                         </div>
                       )}
                     </div>
-                    {pwCheckErr && (
-                      <div
-                        className={`${classes["err-msg"]} ${classes["err-pw"]}`}
-                      >
-                        {errPwCheckMsg}
-                      </div>
-                    )}
+                    <div className={classes["sectionUserInfoInput-feedback"]}>
+                      {rePasswdHasError && (
+                        <p className={classes["sectionUserInfoInput-error"]}>
+                          비밀번호가 일치하지 않습니다.
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -540,18 +293,22 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                   <div className={classes["passpw-item-input"]}>
                     <div>
                       <input
+                        id="birth"
                         type="text"
-                        ref={updateUbirth}
-                        maxLength={8}
-                        minLength={8}
-                        defaultValue={uBirth}
-                        name="uBirth"
-                        onChange={inputCheck}
+                        text="생년월일"
+                        className={birthInputClasses}
+                        value={enteredBirth}
+                        onChange={handleBirthChange}
+                        onBlur={handleBirthBlur}
                       />
                     </div>
-                    {birthErr && (
-                      <div className={classes["err-msg"]}>{errBirthMsg}</div>
-                    )}
+                    <div className={classes["sectionUserInfoInput-feedback"]}>
+                      {birthHasError && (
+                        <p className={classes["sectionUserInfoInput-error"]}>
+                          8자리의 생년월일을 입력해주세요.
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -563,18 +320,23 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                   <div className={classes["passpw-item-input"]}>
                     <div>
                       <input
+                        className={phoneInputClasses}
+                        id="phone"
                         type="text"
-                        ref={updateUphone}
-                        name="uPhone"
-                        maxLength={11}
-                        minLength={10}
-                        defaultValue={uPhone}
-                        onChange={inputCheck}
+                        text="전화번호"
+                        value={enteredPhone}
+                        onChange={handlePhoneChange}
+                        onBlur={handlePhoneBlur}
                       />
                     </div>
-                    {phoneErr && (
-                      <div className={classes["err-msg"]}>{errPhoneMsg}</div>
-                    )}
+                    <div className={classes["sectionUserInfoInput-feedback"]}>
+                      {phoneHasError && (
+                        <p className={classes["sectionUserInfoInput-error"]}>
+                          전화번호는 10~11자리를 입력해야하며, 숫자만 입력이
+                          가능합니다.
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -586,17 +348,21 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                   <div className={classes["passpw-item-input"]}>
                     <div>
                       <input
+                        className={emailInputClasses}
                         type="text"
-                        ref={updateUemail}
-                        name="uEmail"
-                        // ref={EmailErrInput}
-                        defaultValue={uEmail}
-                        onChange={inputCheck}
+                        text="이메일"
+                        value={enteredEmail}
+                        onChange={handleEmailChange}
+                        onBlur={handleEmailBlur}
                       />
                     </div>
-                    {emailErr && (
-                      <div className={classes["err-msg"]}>{errEmailMsg}</div>
-                    )}
+                    <div className={classes["sectionUserInfoInput-feedback"]}>
+                      {emailHasError && (
+                        <p className={classes["sectionUserInfoInput-error"]}>
+                          이메일을 입력해주세요.
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -610,10 +376,12 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                   >
                     <div>
                       <input
+                        className={classes["sectionUserInfoInput-zipcode"]}
                         type="text"
-                        ref={updateZipcode}
-                        defaultValue={uZipcode}
-                        readOnly
+                        text="주소"
+                        id="zipcode"
+                        value={enteredZipcode}
+                        readOnly={true}
                       />
                     </div>
                     <div>
@@ -621,7 +389,6 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                         type="button"
                         onClick={() => {
                           setShowAddr(true);
-                          setUpdateAddr(true);
                         }}
                       >
                         주소찾기
@@ -629,8 +396,8 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                       {showAddr && (
                         <AddressModal
                           onClose={handleAddrClose}
-                          setInputAddr={setInputAddr}
-                          setInputZipCode={setInputZipCode}
+                          setInputZipCode={handleZipcodeChange}
+                          setInputAddr={handleAddressChange}
                         />
                       )}
                     </div>
@@ -638,14 +405,7 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                   <div
                     className={`${classes["passpw-item-input"]} ${classes["addr-addr-input"]}`}
                   >
-                    <div>
-                      <input
-                        type="text"
-                        ref={updateAddrCode}
-                        defaultValue={uAddress}
-                        readOnly
-                      />
-                    </div>
+                    <div></div>
                   </div>
                   <div
                     className={`${classes["passpw-item-input"]} ${classes["addr-detail-input"]}`}
@@ -653,15 +413,26 @@ const MyPagePassPw = ({ user, setUserPw }) => {
                     <div>
                       <input
                         type="text"
-                        name="uDetail"
-                        ref={updateUdetail}
-                        defaultValue={uAdditionalAddr}
-                        onChange={inputCheck}
+                        readOnly
+                        value={enteredAddress}
+                        style={{ cursor: "default" }}
+                      />
+                      <input
+                        type="text"
+                        className={additionalAddressClasses}
+                        onChange={handleAdditionalAddrChange}
+                        value={enteredAdditionalAddress}
+                        onBlur={handleAdditionalAddressBlur}
                       />
                     </div>
-                    {addrErr && (
-                      <div className={classes["err-msg"]}>{errAddrMsg}</div>
-                    )}
+                    <div className={classes["sectionUserInfoInput-feedback"]}>
+                      {additionalAddressHasError && (
+                        <p className={classes["sectionUserInfoInput-error"]}>
+                          상세주소는 특수 문자를 제외한 1글자 이상을
+                          입력해야합니다.
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </td>
               </tr>

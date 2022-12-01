@@ -90,14 +90,14 @@ router.get("/api/orderlist", (req, res) => {
 router.post("/api/updateuser", (req, res) => {
   const {
     idx,
-    uName,
-    uPasswd,
-    uPhone,
-    uEmail,
-    uBirth,
-    uZipcode,
-    uAddress,
-    uAdditionalAddr,
+    enteredName: uName,
+    enteredPasswd: uPasswd,
+    enteredPhone: uPhone,
+    enteredEmail: uEmail,
+    enteredBirth: uBirth,
+    enteredZipcode: uZipcode,
+    enteredAddress: uAddress,
+    enteredAdditionalAddress: uAdditionalAddr,
   } = req.body;
 
   let sql =

@@ -52,7 +52,8 @@ a:hover {
 
   .MyPageSide {
     position: fixed;
-    top: 40vh;
+    top: 20vh;
+    right: 20px;
     z-index: 30;
   }
 }

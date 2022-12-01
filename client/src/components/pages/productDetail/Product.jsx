@@ -14,10 +14,11 @@ import {
   cookieCheck,
   cookieCheckLogin,
 } from "../../../util/authCheck";
+import { useSelector } from "react-redux";
 
 const Product = () => {
   const navigate = useNavigate();
-  const [isLogin, setIsLogin] = useState(false);
+  // const [isLogin, setIsLogin] = useState(false);
   const [user, setUser] = useState();
   const [currentData, setCurrentData] = useState({
     productData: [],
@@ -36,26 +37,28 @@ const Product = () => {
     (productData.price - productData.price * (productData.pDiscount / 100)) *
     orderValue;
 
+  const isLogin = useSelector((state) => state.isLogin.isLogin);
+
   const handleInsertCart = async () => {
     if (!isLogin) {
-      cookieCheckLogin(setIsLogin);
       if (window.confirm("로그인이 필요합니다.")) {
         navigate("/login");
       }
     } else {
-      await axios
-        .post("http://localhost:5000/order/api/cart/insert", {
-          sQuantity: orderValue,
-          uId: user.uId,
-          productId: productData.productId,
-        })
-        .then((response) => {
-          if (response.data.status === 200) {
-            if (window.confirm(response.data.message)) {
-              navigate("/cart");
-            }
-          }
-        });
+      // await axios
+      //   .post("http://localhost:5000/order/api/cart/insert", {
+      //     sQuantity: orderValue,
+      //     uId: user.uId,
+      //     productId: productData.productId,
+      //   })
+      //   .then((response) => {
+      //     if (response.data.status === 200) {
+      //       if (window.confirm(response.data.message)) {
+      //         navigate("/cart");
+      //       }
+      //     }
+      //   });
+      alert("asdasd");
     }
   };
 
@@ -92,7 +95,7 @@ const Product = () => {
   };
   const sendOrderData = () => {
     if (!isLogin) {
-      cookieCheckLogin(setIsLogin);
+      // cookieCheckLogin(setIsLogin);
       if (window.confirm("로그인이 필요합니다.")) {
         navigate("/login");
       }
@@ -102,7 +105,7 @@ const Product = () => {
   };
 
   useEffect(() => {
-    cookieCheck(setIsLogin, setUser);
+    // cookieCheck(setIsLogin, setUser);
 
     const fetchData = async () => {
       await axios

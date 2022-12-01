@@ -16,10 +16,6 @@ const ProductsBest = ({ bestProduct, hasMore, onStateNum }) => {
     setTime(time.toLocaleString("ko-kr"));
   }, []);
 
-  console.log(bestProduct);
-  console.log(hasMore);
-  console.log(onStateNum);
-
   return (
     <div className={classes.productsBest}>
       <div className={classes["productsBest-titleWrap"]}>

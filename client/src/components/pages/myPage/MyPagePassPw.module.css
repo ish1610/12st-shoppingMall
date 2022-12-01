@@ -44,7 +44,7 @@
 
 .passwd-show-icon {
   position: relative;
-  left: 160px;
+  left: 148px;
   top: -25px;
 }
 
@@ -77,8 +77,8 @@
   margin-bottom: 10px;
 }
 
-.err-msg {
-  color: red;
+.sectionUserInfoInput-error {
+  color: var(--red-color);
 
   font-weight: bold;
 
