@@ -1,11 +1,8 @@
-﻿
-
-
- 
- # Rest API를 활용한 쇼핑 플랫폼 12st
+﻿# Rest API를 활용한 쇼핑 플랫폼 12st
 ![스크린샷 2022-12-02 오후 2 48 09](https://user-images.githubusercontent.com/85052351/205223960-9ec18f3c-8dae-40f3-b345-8c154afed670.png)
 
 
+![스크린샷 2022-12-02 오후 2 50 05](https://user-images.githubusercontent.com/85052351/205224208-59a0db13-6cc1-4b22-8f6e-720c86687727.png)
 
  <h2>Blog.</h2> 
  https://nicehyun12.tistory.com/78
